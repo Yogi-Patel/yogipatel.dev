@@ -1,0 +1,69 @@
+{% extends 'website/_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<style>
+    .card:hover
+    {
+        transform: scale(1.03);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+        box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    }
+</style>
+
+{% comment %} Portfolio Page Banner {% endcomment %}
+<section class="py-5 container" >
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 me-auto">
+            <p class="display-1 fw-bold">portfolio</p>
+            <p class="lead text-body-secondary">
+                I boast of experience in crafting a diverse array of software, 
+                spanning web and desktop applications, digital abodes, command-line marvels, and systems hidden deep within. 
+                <br>Peruse a selection of my endeavors hence.
+            </p>
+        </div>
+    </div>
+</section>
+
+{% comment %} Album like catalog of projects  {% endcomment %}
+<div class="py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3"> <!-- Change these classes if you do not like the responsiveness of the project cards -->
+
+            {% comment %} For loop for the project cards {% endcomment %}
+            {% for project in projects %}
+                <a class = "link-underline link-underline-opacity-0" id="card" href="{% url 'project' project.slug %}" > <!-- target = "_blank"-->
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <svg class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="true">                                
+                                <image x="0" y="0.5rem" width="100%" height="100%" href="{{ project.thumbnail.image.url }}" /> 
+                                {% comment %} 
+                                It is project.thumbnail.image.url because project.thumbnail is an Image object.
+                                You need to then access the image field of project.thumbnail using project.thumbnail.image
+                                project.thumbnail.image has url attribute that gives the URL for the image
+                                {% endcomment %}
+                            </svg>
+                            <div class="card-body">
+                                <h4 class="card-title fw-bold">{{ project.title }}</h4> 
+                                <p class="card-text">
+                                    {{ project.short_description }}
+                                </p> 
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-body-secondary">{{ project.software_type }}</small> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>     
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

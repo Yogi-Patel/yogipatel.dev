@@ -1,0 +1,129 @@
+{% extends 'website/_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+{% comment %} About Page Banner {% endcomment %}
+<div class="container col-xxl-8 px-4 pt-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 pt-0">
+      <div class="col-10 col-sm-8 col-lg-6 d-none d-lg-block mt-0">
+        <img src="{% static 'website/Me.png' %}" class="d-block mx-lg-auto img-fluid" alt="Me" width="700" height="500"> <!-- replace src -->
+      </div>
+      <div class="col-lg-6 mt-0">
+        <h1 class="display-1 fw-bold text-body-emphasis lh-1 mb-3">about</h1>
+        <p class="lead">
+            <!-- Hark, dear visitor! As thou dost peruse these digital pages, lend thine ear to the text herein, for it bears a Shakespearean charm. 
+            Allow the Bard's language to whisk thee on a journey of discovery and wonder. Read on, be enchanted! -->
+            Verily, I do hold in my possession a Bachelor's degree in the arcane arts of Computer Information Systems. 
+            With a sturdy base in the realm of technology, I doth set forth upon a grand expedition, venturing into the thrilling domain of the tech industry, armed with wisdom 
+            and unwavering resolve.
+        </p>
+        
+      </div>
+    </div>
+</div>
+
+{% comment  %} Skills Div {% endcomment %}
+<div class="bg-body-tertiary">
+    <div class="container px-4 pt-5">
+        <h2 class="pb-2 border-bottom">Skills</h2>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+
+            <!-- Part of a loop -->
+            {% for skill in skills %}
+                <div class="col d-flex align-items-start">
+                    <img class="bi text-body-secondary flex-shrink-0 me-3" src="{{ skill.icon.url }}"></img>
+                    <div>
+                        <h3 class="mb-0 fs-5">{{ skill.skill_title }}</h3>
+                        <p class="fw-light">{{ skill.skill_description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- End of the loop -->
+
+        </div>
+    </div>
+</div>
+
+
+{% comment  %} Education Div {% endcomment %}
+<div class="">
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 mb-4 border-bottom">Education</h2>
+    
+        <div class="">
+
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <div>
+                    <h3 class="mb-0 fs-5">University of The Fraser Valley</h3>
+                    <p class="fw-light">A platform and cloud-based service for software development and version control using Git.</p>
+                </div>
+            </div>
+            
+
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <div>
+                    <h3 class="mb-0 fs-5">University of The Fraser Valley</h3>
+                    <p class="fw-light">A platform and cloud-based service for software development and version control using Git.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% comment  %} Favourite Quotes Div {% endcomment %}
+<div class="bg-body-tertiary">
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 mb-4 border-bottom">Favourite Quotes</h2>
+    
+        <div class="">
+
+            
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <blockquote class="blockquote">
+                    <p class="fs-5 fw-normal">When they say 2% milk, I don't know what the other 98% is.</p>
+                    <footer class="ms-3 blockquote-footer"><!--Someone famous in <cite title="Source Title">Source Title</cite>--> Andy Dwyer (Parks and Recreation)</footer>
+                </blockquote>
+            </div>
+            
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <blockquote class="blockquote">
+                    <p class="fs-5">Abraham Lincoln once said that, &quot;If you&#39re a racist, I will attack you with the North.&quot; And those are the principles that I carry with me in the workplace.</p>
+                    <footer class="ms-3 blockquote-footer"><!--Someone famous in <cite title="Source Title">Source Title</cite>--> Michael Scott (The Office)</footer>
+                </blockquote>
+            </div>
+            
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <blockquote class="blockquote">
+                    <p class="fs-5">I&#39m not superstitious but I am a little stitious.</p>
+                    <footer class="ms-3 blockquote-footer"><!--Someone famous in <cite title="Source Title">Source Title</cite>--> Michael Scott (The Office)</footer>
+                </blockquote>
+            </div>
+            
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <blockquote class="blockquote">
+                    <p class="fs-5">Is Star Wars the one with the little wizard boy?</p>
+                    <footer class="ms-3 blockquote-footer"><!--Someone famous in <cite title="Source Title">Source Title</cite>--> Ron Swanson (Parks and Recreation)</footer>
+                </blockquote>
+            </div>
+            
+            <div class="d-flex align-items-start mx-3 mb-2">
+                <blockquote class="blockquote">
+                    <p class="fs-5">Just leave me alone, I know what I'm doing.</p>
+                    <footer class="ms-3 blockquote-footer"><!--Someone famous in <cite title="Source Title">Source Title</cite>--> Kimi Raikkonen (Abu Dhabi GP 2012)</footer>
+                </blockquote>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

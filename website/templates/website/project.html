@@ -1,0 +1,71 @@
+{% extends 'website/_base.html' %}
+
+
+{% block content %}
+
+
+<style>
+    #display_image:hover
+    {
+        transform: scale(1.03);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12); 
+    }
+</style>
+
+{% comment %} Project Information Banner {% endcomment %}
+<section class="pt-5 container" >
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 me-auto">
+            <p class="display-1 fw-bold">{{ project.project_title }}</p>
+            
+            <p class="fw-light ms-1 ps-0">{{ project.start_date }} - {{ project.end_date }}</p>
+
+            <h5 class="ms-1 ps-0 mt-3 pt-3">Technologies Used</h5>
+            <p class="fw-light ms-1 ps-0">{{ project.technologies_used }}</p>
+            
+            <h5 class="ms-1 ps-0 mt-3 pt-3">Description</h5>
+            <p class="fw-light ms-1 ps-0">
+                {{ project.long_description }}
+            </p>
+            
+            {% if project.code_url or project.deployment_url %}
+                <h5 class="ms-1 ps-0 mt-3 pt-3">URLs</h5>
+                <p class="text-muted ms-1 ps-0">
+                    {% if project.code_url %}
+                        <p class="ms-1 ps-0 mb-1">
+                            <span class="fw-light">Code (GitHub): </span><a href="{{ project.code_url }}" target="_blank">{{ project.code_url }}</a><br>
+                        </p>
+                    {% endif %}                    
+                    {% if project.deployment_url %}
+                        <p class="ms-1 ps-0 mb-1">
+                            <span class="fw-light">Deployment: </span><a href="{{ project.deployment_url }}" target="_blank">{{ project.deployment_url }}</a><br>
+                        </p>
+                    {% endif %}                    
+                </p>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+
+    
+{% comment %} Project Images Section {% endcomment %}
+<div class="py-5 bg-body-tertiary">
+    <div class="container">            
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 g-2"> <!-- Change these classes if you do not like the responsiveness of the project cards -->
+                
+            {% for image in images %}                    
+                    <div class="container px-5 col" id="display_image">
+                        <a href="{{ image.image.url }}" target = "_blank">
+                            <img src="{{ image.image.url }}" class="img-fluid border rounded-3 mb-4" alt="" width="700" height="500">
+                        </a>
+                    </div>                  
+            {% endfor %}           
+                          
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
