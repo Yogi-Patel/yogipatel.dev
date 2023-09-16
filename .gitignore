@@ -1,5 +1,5 @@
 db.sqlite3
-secrets.txt
+sensitiveInformation.py
 env/
 media/
 __pycache__/
