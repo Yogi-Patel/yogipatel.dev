@@ -18,28 +18,10 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     </head>
-    <body data-bs-theme = "dark">
+    <body data-bs-theme = "">
         
-        <script>
-            // Function to toggle the theme
-            function toggleTheme() {
-                const body = document.body;
-                const mode_text = document.getElementById('mode_text');
-
-                if (body.getAttribute('data-bs-theme') === 'dark') {
-                    // Switch to light theme
-                    body.setAttribute('data-bs-theme', 'light');
-                    mode_text.innerText = '<dark_mode>';
-                } else {
-                    // Switch to dark theme
-                    body.setAttribute('data-bs-theme', 'dark');
-                    mode_text.innerText = '<light_mode>';
-                }
-            }
-        </script>
-
         {% comment %} Navbar {% endcomment %}
-        <nav class="navbar navbar-expand-lg bg-black sticky-top" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-black sticky-top" data-bs-theme="dark"> 
             <div class="container">
                 <a class=" link-opacity-75-hover link-underline link-underline-opacity-0 link-light" href="{% url 'home' %}">
                     <p class="display-6">&lt;yrp&gt;</p>
@@ -59,13 +41,64 @@
                             <a class="nav-link" href="{% url 'contact' %}"><h5 class ="mb-2 px-3">contact</h5></a> <!-- change href in django maybe. -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link pointer" onclick="toggleTheme()" style="cursor:pointer;"><h5 id="mode_text" class ="mb-2 px-3">&ltlight_mode&gt</h5></a> <!-- change href in django maybe. -->
+                            <a class="nav-link pointer" onclick="toggleTheme()" style="cursor:pointer;"><h5 id="mode_text" class ="mb-2 px-3"></h5></a> <!-- change href in django maybe. -->
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
+        <script> 
+        // Script after <nav> so that it is run before the rest of the page
+            
+            function toggleTheme() 
+            {
+                // Function to toggle the theme
+
+                const body = document.body;
+                const mode_text = document.getElementById('mode_text');
+                let currentTheme = localStorage.getItem('theme'); 
+            
+                if (currentTheme === 'dark') 
+                {
+                    body.setAttribute('data-bs-theme', 'light');
+                    mode_text.innerText = '<dark_mode>';
+                    localStorage.setItem('theme', 'light'); 
+                } 
+                else 
+                {    
+                    body.setAttribute('data-bs-theme', 'dark');
+                    mode_text.innerText = '<light_mode>';
+                    localStorage.setItem('theme', 'dark'); 
+                }    
+            }
+
+            
+            function setInitialTheme() 
+            {
+                // Function to set the initial theme based on user's choice
+
+                const body = document.body;
+                const mode_text = document.getElementById('mode_text');
+                let currentTheme = localStorage.getItem('theme');
+                
+                if (currentTheme === 'dark' || currentTheme === null) 
+                {               
+                    localStorage.setItem('theme', 'dark');
+                    body.setAttribute('data-bs-theme', 'dark');
+                    mode_text.innerText = '<light_mode>';    
+                } 
+                else 
+                {                                           
+                    localStorage.setItem('theme', 'light');
+                    body.setAttribute('data-bs-theme', 'light');
+                    mode_text.innerText = '<dark_mode>';
+                }
+            }
+        
+            setInitialTheme();
+            
+        </script>
 
         {% block content %}
         {% endblock content %}
@@ -84,5 +117,7 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         
         </script>
+
+        
     </body>
 </html>
