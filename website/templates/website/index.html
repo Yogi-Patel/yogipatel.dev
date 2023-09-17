@@ -19,7 +19,7 @@
 <div class="container col-xxl-8 px-4 pt-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 pt-0">
         <div class="col-10 col-sm-8 col-lg-6 d-none d-lg-block mt-0">
-            <img src="{% static 'website/Me Upside Down.png' %}" class="d-block mx-lg-auto img-fluid" alt="Upside Down Me" width="700" height="500"> 
+            <img src="{% static 'website/Me Upside Down.png' %}" title="Upside Down Me" class="d-block mx-lg-auto img-fluid" alt="Upside Down Me" width="700" height="500"> 
             {% comment %} static src {% endcomment %}
         </div>
         <div class="col-lg-6">
@@ -38,7 +38,7 @@
         <div class="text-center  pb-1 mb-3">
             <em class = "text-muted">MY LATEST WORK</em>
         </div>
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3"> <!-- Change these classes if you do not like the responsiveness of the project cards -->
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
 
             {% comment %} For loop for the three cards on the page {% endcomment %}
             {% for project in projects %}

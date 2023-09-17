@@ -4,15 +4,17 @@ from .models import Project, Skill, Contact, Image
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-# Create your views here.
 
 
-def index(request):
-    # View for the /home page
+
+# Helper Functions 
+
+def get_context_from_projects(projects):
+    # Helper function to extract relevant information from the projects queryset and return it in a dict
     
-    context = { "projects": [] }
-    
-    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
+    context = { 
+        'projects': [], 
+        }
     
     for project in projects:
         context['projects'].append({
@@ -20,12 +22,21 @@ def index(request):
             'slug': project.slug,
             'thumbnail': project.images.all().order_by('priority').first(), # The image with the highest priority is the thumbnail
             'short_description': project.short_description,
-            'software_type': project.software_type
+            'software_type': project.software_type,
         })
 
+    return context
 
+
+# Views 
+
+def index(request):
+    # View for the /home page
+    
+    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
+    context = get_context_from_projects(projects)
+    
     return render(request, 'website/index.html', context) 
-
 
 
 def about(request):
@@ -33,28 +44,17 @@ def about(request):
     
     skills = Skill.objects.all().order_by('skill_type', 'priority')
     context = {"skills": skills,}
-    return render(request, 'website/about.html', context)
 
+    return render(request, 'website/about.html', context)
 
 
 def portfolio(request):
     # View for the /portfolio page
-
-    context = { "projects": [] }
     
     projects = Project.objects.all().order_by('-featured', 'priority', '-end_date') # Retrieve all the projects that are ordered by end_date
-    
-    for project in projects:
-        context['projects'].append({
-            'title': project.project_title,
-            'slug': project.slug,
-            'thumbnail': project.images.all().order_by('priority').first(), # The image with the highest priority is the thumbnail
-            'short_description': project.short_description,
-            'software_type': project.software_type
-        })
+    context = get_context_from_projects(projects)
 
     return render(request, 'website/portfolio.html', context)
-
 
 
 def project(request, project_slug):
@@ -68,9 +68,7 @@ def project(request, project_slug):
         'images': images
     }
 
-    
     return render(request, "website/project.html", context)
-
 
 
 def contact(request):
