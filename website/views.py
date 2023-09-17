@@ -23,19 +23,17 @@ def index(request):
             'software_type': project.software_type
         })
 
-        print(project, "\n")
-    
-    
+
     return render(request, 'website/index.html', context) 
 
 
 
 def about(request):
     # View for the /about page
-    context = {}
+    
     skills = Skill.objects.all().order_by('skill_type', 'priority')
-
-    return render(request, 'website/about.html', {"skills": skills,})
+    context = {"skills": skills,}
+    return render(request, 'website/about.html', context)
 
 
 
