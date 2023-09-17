@@ -12,7 +12,7 @@ def index(request):
     
     context = { "projects": [] }
     
-    projects = Project.objects.all().order_by('-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
+    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
     
     for project in projects:
         context['projects'].append({
@@ -22,6 +22,9 @@ def index(request):
             'short_description': project.short_description,
             'software_type': project.software_type
         })
+
+        print(project, "\n")
+    
     
     return render(request, 'website/index.html', context) 
 
@@ -41,7 +44,7 @@ def portfolio(request):
 
     context = { "projects": [] }
     
-    projects = Project.objects.all().order_by('-end_date') # Retrieve all the projects that are ordered by end_date
+    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date') # Retrieve all the projects that are ordered by end_date
     
     for project in projects:
         context['projects'].append({

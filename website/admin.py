@@ -7,20 +7,38 @@ from .models import Project, Skill, Image, Contact
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
 
-    list_display = ('project_title', 'software_type', 'start_date', 'end_date')
-    ordering = ['-end_date']
+    # The order of the objects in the admin is how it will show up on the website
+    list_display = ('project_title', 'software_type', 'featured', 'start_date', 'end_date', 'priority')
+    ordering = ['-featured', 'priority', '-end_date']
+    list_editable = ['featured', 'priority']
     # ordering by -end_date means that the latest project will show up first
 
     search_fields = ['project_title', 'software_type']
+    actions = ['priority_minus_one', 'priority_plus_one']
+
+    def priority_minus_one(self, request, queryset):
+        for skill in queryset:
+            # Decrease the priority by 1
+            skill.priority -= 1
+            skill.save()
+
+    def priority_plus_one(self, request, queryset):
+        for skill in queryset:
+            # Increase the priority by 1
+            skill.priority += 1
+            skill.save()
+
 
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
 
     list_display = ('skill_title', 'display_skill_type', 'priority')
-    ordering = ['skill_type','priority'] # 1 will be the highest priority
+    ordering = ['skill_type', 'priority'] # 1 will be the highest priority
     search_fields = ['skill_title', 'skill_type']
     actions = ['priority_minus_one', 'priority_plus_one']
+
+    list_editable = ['priority']
 
     def priority_minus_one(self, request, queryset):
         for skill in queryset:
@@ -48,6 +66,8 @@ class ImageAdmin(admin.ModelAdmin):
     ordering = ['project', 'priority']
     search_fields = ['project__project_title', 'image_title']
     actions = ['priority_minus_one', 'priority_plus_one']
+
+    list_editable = ['priority']
 
     def priority_minus_one(self, request, queryset):
         for image in queryset:

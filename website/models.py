@@ -12,25 +12,29 @@ class Project(models.Model):
 
     end_date = models.DateField(verbose_name="End Date")
 
-    software_type = models.CharField(max_length = 50, help_text = "MAX_LENGTH = 50", verbose_name="Software Type")
+    software_type = models.CharField(max_length=50, help_text="MAX_LENGTH = 50", verbose_name="Software Type")
 
-    technologies_used = models.CharField(max_length = 150, help_text = "MAX_LENGTH = 150", verbose_name="Technologies Used")
+    technologies_used = models.CharField(max_length=150, help_text="MAX_LENGTH = 150", verbose_name="Technologies Used")
 
-    short_description = models.CharField(max_length = 150, help_text = "Try to reach 125 characters for uniform card sizes. MAX_LENGTH = 150", verbose_name="Short Description")
+    short_description = models.CharField(max_length=150, help_text="Try to reach 125 characters for uniform card sizes. MAX_LENGTH = 150", verbose_name="Short Description")
 
     long_description = models.TextField(verbose_name="Long Description")
 
-    code_url = models.URLField(max_length = 300, blank = True, null = True, help_text = "Optional. MAX_LENGTH = 300", verbose_name="Code URL")
+    code_url = models.URLField(max_length=300, blank=True, null=True, help_text="Optional. MAX_LENGTH = 300", verbose_name="Code URL")
 
-    deployment_url = models.URLField(max_length = 300, blank = True, null = True, help_text = "Optional. MAX_LENGTH = 300", verbose_name="Deployment URL")
+    deployment_url = models.URLField(max_length=300, blank=True, null=True, help_text="Optional. MAX_LENGTH = 300", verbose_name="Deployment URL")
 
-    slug = models.SlugField(max_length = 150, blank = True, null = True, help_text = "Optional. MAX_LENGTH = 150", verbose_name="Slug")
+    slug = models.SlugField(max_length=150, blank=True, null=True, help_text="Optional. MAX_LENGTH = 150", verbose_name="Slug")
     
+    featured = models.BooleanField(help_text="Is it okay if this project shows up on the home page?", verbose_name="Featured Project", default=True)
+
+    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
+
 
     def __str__(self):
         return f"{self.project_title}"
 
-    def save(self, *args, **kwargs):  # new
+    def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.project_title)
         return super().save(*args, **kwargs)
@@ -98,13 +102,13 @@ class Image(models.Model):
 class Contact(models.Model):
     # Model for storing all the submissions made using the /contact form 
 
-    first_name = models.CharField(max_length = 150, verbose_name="First Name")
+    first_name = models.CharField(max_length=150, verbose_name="First Name")
 
-    last_name = models.CharField(max_length = 150, blank=True, null=True, help_text="Optional.", verbose_name="Last Name")
+    last_name = models.CharField(max_length=150, blank=True, null=True, help_text="Optional.", verbose_name="Last Name")
 
     email = models.EmailField(verbose_name="E-mail")
 
-    subject = models.CharField(max_length = 150, blank=True, null=True, help_text="Optional.", verbose_name="Subject")
+    subject = models.CharField(max_length=150, blank=True, null=True, help_text="Optional.", verbose_name="Subject")
 
     message = models.TextField(verbose_name="Message")
 

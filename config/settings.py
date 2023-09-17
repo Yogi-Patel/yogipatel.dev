@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 
     #3rd party apps
-    "django_cleanup.apps.CleanupConfig", # automatically deletes images when their respective objects are deleted from the model
+    "django_cleanup.apps.CleanupConfig", # automatically deletes images when their respective objects are deleted from the model    
 ]
 
 MIDDLEWARE = [
