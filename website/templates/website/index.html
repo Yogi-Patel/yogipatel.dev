@@ -16,11 +16,27 @@
 </style>
 
 {% comment  %} Index Page Banner {% endcomment %}
-<div class="container col-xxl-8 px-4 pt-5">
+<section class="py-5 container pb-lg-0">
+    <div class="row flex-lg-row-reverse align-items-center g-5 pt-0">
+        <div class="col-10 col-sm-8 col-lg-6 d-none d-lg-block mt-0">
+            <img src="{% static 'website/Me Upside Down.png' %}" title="Me" class="d-block mx-lg-auto img-fluid" alt="Me" width="700" height="500">
+          </div>
+        <div class="col-lg-6 col-md-8 me-auto">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Hail! I am Yogi.</h1>
+            <p class="lead text-body-secondary">
+                Hark, dear visitor! As thou dost peruse these digital pages, lend thine ear to the text herein, for it bears a Shakespearean charm.
+                Allow the Bard's language to whisk thee on a journey of discovery and wonder. Read on, be enchanted! 
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+{% comment %} <div class="container col-xxl-8 px-4 pt-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 pt-0">
         <div class="col-10 col-sm-8 col-lg-6 d-none d-lg-block mt-0">
             <img src="{% static 'website/Me Upside Down.png' %}" title="Upside Down Me" class="d-block mx-lg-auto img-fluid" alt="Upside Down Me" width="700" height="500"> 
-            {% comment %} static src {% endcomment %}
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Hail! I am Yogi.</h1>
@@ -30,7 +46,7 @@
             </p>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
   
 {% comment  %} Latest Works {% endcomment %}
 <div class="py-5 bg-body-tertiary">
