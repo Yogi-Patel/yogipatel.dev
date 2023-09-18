@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  os.getenv('SECRET_KEY')#sensitiveInformation.SECRET_KEY # SECRET_KEY stored in sensitiveInformation.py and that file is in gitignore to avoid pushing it to the remote branch
+SECRET_KEY =  os.getenv('SECRET_KEY')  #sensitiveInformation.SECRET_KEY # SECRET_KEY stored in sensitiveInformation.py and that file is in gitignore to avoid pushing it to the remote branch
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -101,16 +101,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {}
 }
-# How does the below line of code know what the name of the variable is
+
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
