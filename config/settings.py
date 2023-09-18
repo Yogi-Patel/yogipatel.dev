@@ -26,7 +26,7 @@ SECRET_KEY =  os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['yogipatel-dev-4094d9dbd286.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['yogipatel-dev-4094d9dbd286.herokuapp.com', '127.0.0.1', 'yogipatel.dev']
 
 
 # Application definition
