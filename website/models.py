@@ -30,6 +30,9 @@ class Project(models.Model):
 
     priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
 
+    lines_of_code = models.PositiveIntegerField(default=0, help_text="How many lines of code was this project?", verbose_name="Lines of Code")
+    
+
 
     def __str__(self):
         return f"{self.project_title}"

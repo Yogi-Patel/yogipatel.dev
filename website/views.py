@@ -4,7 +4,7 @@ from .models import Project, Skill, Contact, Image
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-
+from django.db.models import Sum
 
 
 # Helper Functions 
@@ -54,6 +54,8 @@ def portfolio(request):
     projects = Project.objects.all().order_by('-featured', 'priority', '-end_date') # Retrieve all the projects that are ordered by end_date
     context = get_context_from_projects(projects)
 
+    context['lines_of_code'] = Project.objects.aggregate(total_lines_of_code=Sum('lines_of_code'))['total_lines_of_code']
+
     return render(request, 'website/portfolio.html', context)
 
 
@@ -65,7 +67,7 @@ def project(request, project_slug):
 
     context = {
         'project': project, 
-        'images': images
+        'images': images,
     }
 
     return render(request, "website/project.html", context)
