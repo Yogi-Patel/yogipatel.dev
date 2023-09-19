@@ -9,7 +9,7 @@ You can explore the website at [www.yogipatel.dev](https://www.yogipatel.dev).
    At this commit, the project can be run locally, but deployment on Heroku is not yet possible.   
    To prepare the code for deployment, please follow the instructions outlined in [Deploying to Heroku](#deploying-to-heroku).
 
-2. **Current Commit:**  
+2. **Commit aa094bd:**  
    With this commit, the project is fully deployable on Heroku.  
    This commit not only updates `settings.py` to enable project deployment but also includes improvements to the project's visual aspects (template files) and enhances overall responsiveness.  
    Be sure to update the `ALLOWED_HOSTS` in `settings.py` and configure the Config Vars in your Heroku Dyno if you haven't done so already.
