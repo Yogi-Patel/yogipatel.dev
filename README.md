@@ -167,7 +167,7 @@ You can explore the website at [www.yogipatel.dev](https://www.yogipatel.dev).
    ```
    pip freeze > requirements.txt
    ```
-   **Note:** Run the above command everytime you add/install a new library. This is what Heroku will use to create an environment.
+   **Note:** Run the above command everytime you add/install a new library. This is what Heroku will use to create an environment. Hopefully, you were using a virtual environment.
 
    Create a .txt file called **runtime.txt** and add `python-<version>`. For me, it was `python-3.11.5`.  
 
