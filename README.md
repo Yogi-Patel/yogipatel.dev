@@ -87,7 +87,7 @@ You can explore the website at [www.yogipatel.dev](https://www.yogipatel.dev).
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'website', 'static'),
     )
     ```
 
