@@ -202,7 +202,18 @@ After the Heroku app is successfully built, follow the following steps to connec
      Select **Forward Path** and,  
      Select **SSL Enabled**.
 
+### Model Migration
+If you want to make changes to the models, make the changes and then run:  
+```python
+    python manage.py makemigrations
+```
 
+then, commit and push the changes.
+After the Heroku build is successful, run the following: 
+``` 
+    heroku -app=<app_name> python manage.py makemigrations
+    heroku -app=<app_name> python manage.py migrate
+```
 
 
 
