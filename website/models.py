@@ -67,7 +67,7 @@ class Skill(models.Model):
     
     skill_type = models.IntegerField(choices=SKILL_TYPES, help_text="Skill type decides which one to show first", verbose_name="Skill Type")
 
-    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority")
+    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
 
 
     def __str__(self):
@@ -88,7 +88,7 @@ class Image(models.Model):
     
     slug = models.SlugField(max_length=150, blank=True, null=True, help_text="Optional. MAX_LENGTH = 150", verbose_name="Slug")
     
-    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority")
+    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
 
 
     def __str__(self):
