@@ -84,7 +84,7 @@ class Image(models.Model):
     
     image = models.ImageField(upload_to="project_images", verbose_name="Image")
     
-    image_title = models.CharField(max_length=150, help_text="MAX_LENGTH = 150. OPTIONAL", verbose_name="Image Title") 
+    image_title = models.CharField(max_length=150, blank=True, null=True, help_text="MAX_LENGTH = 150. OPTIONAL", verbose_name="Image Title") 
     
     slug = models.SlugField(max_length=150, blank=True, null=True, help_text="Optional. MAX_LENGTH = 150", verbose_name="Slug")
     
