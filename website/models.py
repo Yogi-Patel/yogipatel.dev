@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.template.defaultfilters import slugify 
 
@@ -83,7 +84,7 @@ class Image(models.Model):
     
     image = models.ImageField(upload_to="project_images", verbose_name="Image")
     
-    image_title = models.CharField(max_length=150, help_text="MAX_LENGTH = 150", verbose_name="Image Title") 
+    image_title = models.CharField(max_length=150, help_text="MAX_LENGTH = 150. OPTIONAL", verbose_name="Image Title") 
     
     slug = models.SlugField(max_length=150, blank=True, null=True, help_text="Optional. MAX_LENGTH = 150", verbose_name="Slug")
     
@@ -93,7 +94,16 @@ class Image(models.Model):
     def __str__(self):
         return f"Image: {self.image_title} | Project: {self.project.project_title} | Priority: {self.priority}"
 
-    def save(self, *args, **kwargs):  # new
+    def save(self, *args, **kwargs):
+
+        if not self.image_title:  # Check if image_title is not provided
+            # Extract the image file name from the path and set it as image_title
+            self.image_title = os.path.basename(self.image.name)
+            # Remove file extension (if any) from image_title
+            self.image_title, _ = os.path.splitext(self.image_title)
+            #self.image_title = slugify(self.image_title)  # You can slugify it if needed
+        
+        
         if not self.slug:
             self.slug = slugify(self.image_title)
         return super().save(*args, **kwargs)
