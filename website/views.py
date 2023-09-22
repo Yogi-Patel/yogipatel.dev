@@ -23,6 +23,7 @@ def get_context_from_projects(projects):
             'thumbnail': project.images.all().order_by('priority').first(), # The image with the highest priority is the thumbnail
             'short_description': project.short_description,
             'software_type': project.software_type,
+            'lines_of_code': project.lines_of_code,
         })
 
     return context
