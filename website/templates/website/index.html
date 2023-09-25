@@ -76,8 +76,12 @@
                                     
                                 </p> 
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-body-secondary justify-content-start">{{ project.software_type }}</small> 
-                                    <small class="text-body-secondary justify-content-end">{{ project.lines_of_code }} Lines</small> 
+                                    <small class="text-body-secondary justify-content-start">{{ project.software_type }}</small>
+                                    {% if project.lines_of_code != 0 %}
+                                    <small class="text-body-secondary justify-content-end">Lines: {{ project.lines_of_code }}</small> 
+                                    {% else %}
+                                    <small class="text-body-secondary justify-content-end">Lines: N/A</small> 
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
