@@ -211,8 +211,8 @@ If you want to make changes to the models, make the changes and then run:
 then, commit and push the changes.
 After the Heroku build is successful, run the following: 
 ``` 
-    heroku run -app=<app_name> python manage.py makemigrations
-    heroku run -app=<app_name> run python manage.py migrate
+    heroku run --app=<app_name> python manage.py makemigrations
+    heroku run --app=<app_name> run python manage.py migrate
 ```
 
 

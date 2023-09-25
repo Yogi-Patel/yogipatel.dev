@@ -51,9 +51,11 @@
 
         </div>
         {% if project.show_message and project.message %}
-            <div role="alert" class="alert alert-info alert-dismissible fade show mt-4">
-                {{ project.message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="container">
+                <div role="alert" class="alert alert-info alert-dismissible fade show mt-4 mx-3">
+                    {{ project.message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
         {% endif %}
     </div>
