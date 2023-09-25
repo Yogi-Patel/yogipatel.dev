@@ -6,7 +6,9 @@ from django.template.defaultfilters import slugify
 
 class Project(models.Model):
     # Model for storing Projects for /index and /portfolio
-    
+
+    show_project = models.BooleanField(default=True, help_text="Do you want the project to show up on the website?", verbose_name="Show Project")
+
     project_title = models.CharField(max_length=75, help_text="MAX_LENGTH = 75", verbose_name="Project Title")
 
     start_date = models.DateField(verbose_name="Start Date")
@@ -33,6 +35,9 @@ class Project(models.Model):
 
     lines_of_code = models.PositiveIntegerField(default=0, help_text="How many lines of code was this project?", verbose_name="Lines of Code")
 
+    show_message = models.BooleanField(default=False, help_text="Do you want to show an additional message?", verbose_name="Show message?")
+
+    message = models.CharField(max_length=250, help_text="MAX_LENGTH = 250", verbose_name="Additional Message", blank=True, null=True)
 
 
     def __str__(self):

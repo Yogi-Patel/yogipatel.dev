@@ -8,9 +8,9 @@ from .models import Project, Skill, Image, Contact
 class ProjectAdmin(admin.ModelAdmin):
 
     # The order of the objects in the admin is how it will show up on the website
-    list_display = ('project_title', 'software_type', 'featured', 'start_date', 'end_date', 'priority')
+    list_display = ('project_title', 'software_type', 'show_project', 'featured', 'start_date', 'end_date', 'priority')
     ordering = ['-featured', 'priority', '-end_date']
-    list_editable = ['featured', 'priority']
+    list_editable = ['show_project', 'featured', 'priority']
     # ordering by -end_date means that the latest project will show up first
 
     search_fields = ['project_title', 'software_type']

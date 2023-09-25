@@ -34,7 +34,7 @@ def get_context_from_projects(projects):
 def index(request):
     # View for the /home page
     
-    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
+    projects = Project.objects.all().filter(show_project=True).order_by('-featured', 'priority', '-end_date')[:3] # Retrieve the 3 most recent (based on end_date) Projects      
     context = get_context_from_projects(projects)
     
     return render(request, 'website/index.html', context) 
@@ -52,7 +52,7 @@ def about(request):
 def portfolio(request):
     # View for the /portfolio page
     
-    projects = Project.objects.all().order_by('-featured', 'priority', '-end_date') # Retrieve all the projects that are ordered by end_date
+    projects = Project.objects.all().filter(show_project=True).order_by('-featured', 'priority', '-end_date') # Retrieve all the projects that are ordered by end_date
     context = get_context_from_projects(projects)
 
     context['lines_of_code'] = Project.objects.aggregate(total_lines_of_code=Sum('lines_of_code'))['total_lines_of_code']
