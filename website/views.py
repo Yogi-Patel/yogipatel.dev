@@ -44,7 +44,7 @@ def about(request):
     # View for the /about page
     
     skills = Skill.objects.all().order_by('skill_type', 'priority')
-    certifications = Certification.all().order_by('priority')
+    certifications = Certification.objects.all().order_by('priority')
     context = {
         "skills": skills, 
         "certifications": certifications,
