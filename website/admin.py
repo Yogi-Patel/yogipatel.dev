@@ -2,7 +2,11 @@ from django.contrib import admin
 from .models import Project, Skill, Image, Contact, Certification
 
 # Register your models here.
+'''
+When migrating the database, run makemigrations locally and then use the commmand below to run the migrate command in heroku
+heroku run -a your-app-name python manage.py migrate
 
+'''
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
