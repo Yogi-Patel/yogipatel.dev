@@ -77,7 +77,31 @@ class Skill(models.Model):
 
     def __str__(self):
         return f"Skill: {self.skill_title} | Priority: {self.priority}"
+
+
+
+
+
+class Certifications(models.Model):
+    # Model for storing Certifications on the /about page 
     
+    
+    icon = models.ImageField(upload_to="skill_icons", verbose_name="Icon")
+    
+    certification_title = models.CharField(max_length=50, help_text="MAX_LENGTH = 50" , verbose_name="Certification Title")
+    
+    #certification_description = models.CharField(max_length=75, help_text="MAX_LENGTH = 75", verbose_name="Certification Description")
+    
+    issued_on = models.DateField(verbose_name="Issued on (date)")
+
+    expires_on = models.DateField(verbose_name="Expires on (date)")
+
+    priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
+
+
+    def __str__(self):
+        return f"Certification: {self.certification_title} | Priority: {self.priority}"
+
 
 
 

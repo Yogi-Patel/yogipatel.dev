@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Skill, Image, Contact
+from .models import Project, Skill, Image, Contact, Certifications
 
 # Register your models here.
 
@@ -56,6 +56,30 @@ class SkillAdmin(admin.ModelAdmin):
         # Get the skill type in a human readable form
         return obj.get_skill_type_display()
     display_skill_type.short_description = 'Skill Type'  # Set the custom column name here
+
+
+
+@admin.register(Certifications)
+class CertificationsAdmin(admin.ModelAdmin):
+
+    list_display = ('certification_title', 'issued_on', 'expires_on', 'priority')
+    ordering = ['priority'] # 1 will be the highest priority
+    search_fields = ['certification_title']
+    actions = ['priority_minus_one', 'priority_plus_one']
+
+    list_editable = ['priority']
+
+    def priority_minus_one(self, request, queryset):
+        for certification in queryset:
+            # Decrease the priority by 1
+            certification.priority -= 1
+            certification.save()
+
+    def priority_plus_one(self, request, queryset):
+        for certification in queryset:
+            # Increase the priority by 1
+            certification.priority += 1
+            certification.save()
 
 
 

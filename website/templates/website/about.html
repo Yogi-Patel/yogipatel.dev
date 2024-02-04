@@ -122,8 +122,35 @@
 </div>
 
 
-{% comment  %} Favourite Quotes Div {% endcomment %}
+
+{% comment  %} Certifications Div {% endcomment %}
 <div class="bg-body-tertiary">
+    <div class="container px-4 pt-5">
+        <h2 class="pb-2 border-bottom">Skills</h2>
+    
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 g-4 py-5">
+
+            {% comment %} For loop for the certifications section {% endcomment %}
+            {% for certification in certifications %} 
+                <div class="col d-flex align-items-start p-1">
+                    <img class="bi text-body-secondary flex-shrink-0 me-3" src="{{ certification.icon.url }}">
+                    <div class="mt-3">
+                        <h3 class="mb-0 fs-5">{{ certification.certification_title }}</h3>
+                        <p class="fw-light my-0">Issued: {{ certification.issued_on }}</p>
+                        <p class="fw-light">Expires: {{ certification.expires_on }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+
+{% comment  %} Favourite Quotes Div {% endcomment %}
+<div class="">
     <div class="container px-4 py-5">
         <h2 class="pb-2 mb-4 border-bottom">Favourite Quotes</h2>
     
