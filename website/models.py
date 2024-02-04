@@ -64,7 +64,7 @@ class Skill(models.Model):
     ]
 
     
-    icon = models.ImageField(upload_to="skill_icons", verbose_name="Icon")
+    icon = models.ImageField(upload_to="skill_icons", verbose_name="Icon", help_text="Try to keep the image at 64x64")
     
     skill_title = models.CharField(max_length=50, help_text="MAX_LENGTH = 50" , verbose_name="Skill Title")
     
@@ -86,7 +86,7 @@ class Certification(models.Model):
     # Model for storing Certifications on the /about page 
     
     
-    icon = models.ImageField(upload_to="skill_icons", verbose_name="Icon")
+    icon = models.ImageField(upload_to="skill_icons", verbose_name="Icon", help_text="Try to keep the image at 128x128")
     
     certification_title = models.CharField(max_length=50, help_text="MAX_LENGTH = 50" , verbose_name="Certification Title")
     
@@ -95,6 +95,8 @@ class Certification(models.Model):
     issued_on = models.DateField(verbose_name="Issued on (date)")
 
     expires_on = models.DateField(verbose_name="Expires on (date)")
+
+    badge_url = models.URLField(max_length=300, help_text="MAX_LENGTH = 300", verbose_name="Badge URL")
 
     priority = models.IntegerField(help_text="Enter an Integer", verbose_name="Priority", default=1)
 
