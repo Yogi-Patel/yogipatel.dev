@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Skill, Image, Contact, Certifications
+from .models import Project, Skill, Image, Contact, Certification
 
 # Register your models here.
 
@@ -59,8 +59,8 @@ class SkillAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Certifications)
-class CertificationsAdmin(admin.ModelAdmin):
+@admin.register(Certification)
+class CertificationAdmin(admin.ModelAdmin):
 
     list_display = ('certification_title', 'issued_on', 'expires_on', 'priority')
     ordering = ['priority'] # 1 will be the highest priority

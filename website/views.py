@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Project, Skill, Contact, Image, Certifications
+from .models import Project, Skill, Contact, Image, Certification
 
 from django.conf import settings
 from django.core.mail import send_mail
@@ -44,7 +44,7 @@ def about(request):
     # View for the /about page
     
     skills = Skill.objects.all().order_by('skill_type', 'priority')
-    certifications = Certifications.all().order_by('priority')
+    certifications = Certification.all().order_by('priority')
     context = {"skills": skills, "certifications": certifications}
 
     return render(request, 'website/about.html', context)

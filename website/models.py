@@ -82,7 +82,7 @@ class Skill(models.Model):
 
 
 
-class Certifications(models.Model):
+class Certification(models.Model):
     # Model for storing Certifications on the /about page 
     
     
