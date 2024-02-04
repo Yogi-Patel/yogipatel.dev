@@ -137,9 +137,9 @@
                     <img class="bi text-body-secondary flex-shrink-0 me-3" src="{{ certification.icon.url }}">
                     <div class="mt-3">
                         <h3 class="mb-0 fs-5">{{ certification.certification_title }}</h3>
-                        <p class="fw-light my-0">Validity: {{ certification.issued_on }} - {{ certification.expires_on }}</p>
+                        <p class="fw-light my-0"><strong>Validity:</strong> {{ certification.issued_on }} - {{ certification.expires_on }}</p>
                         <p class="fw-light">
-                            Verify at: <span class="fw-light">Deployment: </span><a href="{{ certification.badge_url }}" target="_blank">Link</a>
+                            <span class="fw-light"><strong>Verify at:</strong> </span><a href="{{ certification.badge_url }}" target="_blank">{{certification.link_name}}</a>
                         </p>
                     </div>
                 </div>
