@@ -45,7 +45,10 @@ def about(request):
     
     skills = Skill.objects.all().order_by('skill_type', 'priority')
     certifications = Certification.all().order_by('priority')
-    context = {"skills": skills, "certifications": certifications}
+    context = {
+        "skills": skills, 
+        "certifications": certifications,
+    }
 
     return render(request, 'website/about.html', context)
 
